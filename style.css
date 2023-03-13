@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root:has(#default:checked) {
+  /* * THEME 1 - DEFAULT THEME */
+
+  /* BACKGROUNDS */
+  --main-background: hsl(222, 26%, 31%);
+  --toggle-background: hsl(223, 31%, 20%);
+  --screen-background: hsl(224, 36%, 15%);
+
+  /* BUTTON BACKGROUND AND SHADOW */
+
+  --btn-background-primary: hsl(30, 25%, 89%);
+  --btn-shadow-primary: hsl(28, 16%, 65%);
+
+  --btn-del-background: hsl(225, 21%, 49%);
+  --btn-del-shadow: hsl(224, 28%, 35%);
+
+  --btn-equals-background: hsl(6, 63%, 50%);
+  --btn-equals-shadow: hsl(6, 70%, 34%);
+
+  /* TEXT */
+
+  --head-text: hsl(0, 0%, 100%);
+  --screen-text: hsl(0, 0%, 100%);
+  --btn-del-reset-text: hsl(0, 0%, 100%);
+  --btn-equals-text: hsl(0, 0%, 100%);
+  --btn-text-primary: hsl(221, 14%, 31%);
+  --attri-text: var(--screen-background);
+}
+
+:root:has(#light:checked) {
+  /* ! THEME 2 => LIGHT */
+
+  --main-background: hsl(0, 0%, 90%);
+  --toggle-background: hsl(0, 5%, 81%);
+  --screen-background: hsl(0, 0%, 93%);
+
+  --btn-background-primary: hsl(45, 7%, 89%);
+  --btn-shadow-primary: hsl(35, 11%, 61%);
+
+  --btn-del-background: hsl(185, 42%, 37%);
+  --btn-del-shadow: hsl(185, 58%, 25%);
+
+  --btn-equals-background: hsl(25, 98%, 40%);
+  --btn-equals-shadow: hsl(25, 99%, 27%);
+
+  --head-text: hsl(221, 14%, 31%);
+  --screen-text: hsl(221, 14%, 31%);
+  --btn-del-reset-text: hsl(0, 0%, 100%);
+  --btn-equals-text: hsl(0, 0%, 100%);
+  --btn-text-primary: hsl(221, 14%, 31%);
+  --attri-text: var(--btn-text-primary);
+}
+:root:has(#neon:checked) {
+  /* ? THEME 3 => NEON */
+
+  --main-background: hsl(268, 75%, 9%);
+  --toggle-background: hsl(268, 71%, 12%);
+  --screen-background: hsl(268, 71%, 12%);
+
+  --btn-background-primary: hsl(268, 47%, 21%);
+  --btn-shadow-primary: hsl(290, 70%, 36%);
+
+  --btn-del-background: hsl(281, 89%, 26%);
+  --btn-del-shadow: hsl(285, 91%, 52%);
+
+  --btn-equals-background: hsl(176, 100%, 44%);
+  --btn-equals-shadow: hsl(177, 92%, 70%);
+
+  --head-text: hsl(52, 100%, 62%);
+  --screen-text: hsl(52, 100%, 62%);
+  --btn-del-reset-text: hsl(0, 0%, 100%);
+  --btn-equals-text: hsl(198, 20%, 13%);
+  --btn-text-primary: hsl(52, 100%, 62%);
+  --attri-text: var(--btn-text-primary);
+}
+
+/* Font style and size */
+body {
+  font-family: "League Spartan", sans-serif;
+  font-size: 32px;
+  background-color: var(--main-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* prefers-color-scheme implementation */
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-background: hsl(0, 0%, 90%);
+    --toggle-background: hsl(0, 5%, 81%);
+    --screen-background: hsl(0, 0%, 93%);
+
+    --btn-background-primary: hsl(45, 7%, 89%);
+    --btn-shadow-primary: hsl(35, 11%, 61%);
+
+    --btn-del-background: hsl(185, 42%, 37%);
+    --btn-del-shadow: hsl(185, 58%, 25%);
+
+    --btn-equals-background: hsl(25, 98%, 40%);
+    --btn-equals-shadow: hsl(25, 99%, 27%);
+
+    --head-text: hsl(221, 14%, 31%);
+    --screen-text: hsl(221, 14%, 31%);
+    --btn-del-reset-text: hsl(0, 0%, 100%);
+    --btn-equals-text: hsl(0, 0%, 100%);
+    --btn-text-primary: hsl(221, 14%, 31%);
+    --attri-text: var(--btn-text-primary);
+  }
+}
+
+/* Container for the whole calculator */
+.container {
+  display: grid;
+  height: 575px;
+  width: 450px;
+  margin-top: 75px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5% 1fr 4fr;
+  gap: 0.8em;
+  border-radius: 12px;
+  color: var(--btn-text);
+}
+
+/* Top part that is above the screen */
+.head-part {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: var(--head-text);
+  padding-left: 1%;
+  position: relative;
+}
+
+/* Styling for the numbers that indicate the themes */
+.theme-numbers {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  font-size: small;
+  width: 3.5rem;
+  top: -1rem;
+  right: 0.63rem;
+}
+
+/* Styling for "calc" text */
+.calc-text {
+  margin-right: auto;
+  font-size: smaller;
+}
+
+/* Styling for "THEME" text */
+.theme-text {
+  font-size: 0.35em;
+  align-self: center;
+  padding-right: 25px;
+}
+
+/* Styling of the background of theme radio buttons */
+.head-part > form > fieldset {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: inherit;
+  padding: 0.2rem 0.2rem;
+  margin-left: auto;
+  background-color: var(--toggle-background);
+  border-radius: 50px;
+  border: none;
+}
+
+/* Styling of the radio buttons */
+.head-part input[type="radio"] {
+  appearance: none;
+  margin: 0 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  /* border: 3px solid white; */
+  border-radius: 50%;
+}
+
+/* Radio button hovered */
+.head-part input[type="radio"]:hover {
+  filter: brightness(1.5);
+  cursor: pointer;
+}
+
+/* Radio buttons checked */
+.head-part input[type="radio"]:checked {
+  background-color: var(--btn-equals-background);
+}
+
+/* Primary button styling */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border-radius: inherit;
+  border: none;
+  color: var(--btn-text-primary);
+  background-color: var(--btn-background-primary);
+  box-shadow: 0 4px var(--btn-shadow-primary);
+}
+
+button:hover {
+  filter: brightness(1.25);
+  cursor: pointer;
+}
+
+/* Clicking effect for buttons */
+button:active {
+  box-shadow: none;
+  position: relative;
+  top: 4px;
+}
+
+.screen {
+  color: var(--screen-text);
+  background-color: var(--screen-background);
+  box-sizing: border-box; /* border-box sizing for a fixed width and height */
+  border-radius: inherit;
+  display: flex;
+  width: inherit;
+  height: 100%;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  align-items: center;
+  font-size: 3rem;
+  overflow-x: hidden;
+}
+
+/* Body of the calculator */
+.calc-body {
+  background-color: hsl(223, 31%, 20%);
+  display: grid;
+  gap: 0.7em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding: 0.7em;
+  border-radius: inherit;
+}
+
+/* Delete, reset and equals buttons styles */
+.delete {
+  color: var(--btn-del-reset-text);
+  background-color: var(--btn-del-background);
+  box-shadow: 0 4px var(--btn-del-shadow);
+}
+
+.reset {
+  grid-column: 1 / span 2;
+  color: var(--btn-del-reset-text);
+  background-color: var(--btn-del-background);
+  box-shadow: 0 4px var(--btn-del-shadow);
+}
+
+.equals {
+  grid-column: 3 / span 2;
+  color: var(--btn-equals-text);
+  background-color: var(--btn-equals-background);
+  box-shadow: 0 4px var(--btn-equals-shadow);
+}
+
+.special {
+  font-size: 0.8em;
+}
+
+/* .equals:hover {
+  background-color: hsl(6, 63%, 60%);
+} */
+
+.attribution {
+  font-size: 11px;
+  color: var(--attri-text);
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (max-width: 550px), (max-height: 675px) {
+  .calc-body {
+    gap: 3vw;
+    border-radius: 5px;
+  }
+  .special {
+    font-size: 0.6em;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    width: 90vw;
+  }
+}
+
+@media (max-height: 675px) {
+  .container {
+    height: 90vh;
+    margin-top: 5vh;
+  }
+}
+
+/* On mobile, buttons get stuck hovered, thus I tried to fix that weird look with removing the effect */
+@media (orientation: portrait) {
+  button:hover {
+    filter: brightness(1);
+  }
+}
